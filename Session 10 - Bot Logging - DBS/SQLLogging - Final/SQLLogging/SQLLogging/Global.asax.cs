@@ -23,13 +23,9 @@ namespace SQLLogging
         protected void Application_Start()
         {
             // Setting up sql string connection
-            SqlConnectionStringBuilder sqlbuilder = new SqlConnectionStringBuilder();
-            sqlbuilder.DataSource = "SQLServer";
-            sqlbuilder.UserID = "TestUser";
-            sqlbuilder.Password = "123456";
-            sqlbuilder.InitialCatalog = "BotDemo";
-
-            connection = new SqlConnection(sqlbuilder.ConnectionString);
+        
+            string connectionString = "Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=BotDemo;Integrated Security=SSPI;";
+            connection = new SqlConnection(connectionString);
             connection.Open();
             Debug.WriteLine("Connection Success");
 

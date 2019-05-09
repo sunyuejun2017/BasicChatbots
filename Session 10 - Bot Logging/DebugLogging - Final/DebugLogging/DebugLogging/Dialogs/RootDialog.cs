@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
+using DebugLogging;
+
 namespace DebugLogging.Dialogs
 {
     [Serializable]
@@ -17,6 +19,8 @@ namespace DebugLogging.Dialogs
         public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> activity)
         {
             var response = await activity;
+            //DebugActivityLogger logger = new DebugActivityLogger();
+            //await logger.LogAsync(response);
             // just post a welcome message and do nothing
             await context.PostAsync("Welcome to the bot framework demo!");
         }

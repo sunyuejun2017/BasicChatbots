@@ -25,7 +25,7 @@ namespace HelloWorld.Dialogs
             PromptDialog.Choice(context: context,
                 resume: this.AfterMenuSelection,
                 options: new List<string>() { CSharp, Nodejs },
-                prompt: "What is your choice of platform ?");
+                prompt: "What is your choice of platform ?",promptStyle:PromptStyle.PerLine);
         }
         private async Task AfterMenuSelection(IDialogContext context, IAwaitable<string> result)
         {
@@ -33,6 +33,7 @@ namespace HelloWorld.Dialogs
             switch (optionSelected)
             {
                 case CSharp:
+                    
                     await context.PostAsync("Choice selected by you : C#");
                     break;
                 case Nodejs:

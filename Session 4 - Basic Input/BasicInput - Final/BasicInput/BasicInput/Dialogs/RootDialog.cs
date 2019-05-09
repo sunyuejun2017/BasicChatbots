@@ -10,9 +10,13 @@ namespace HelloWorld.Dialogs
     {
         string userName = string.Empty;
 
+        int userAge = 0;
+
         // this is our entry point
         public async Task StartAsync(IDialogContext context)
         {
+           
+
             context.Wait(MessageReceivedAsync);
         }
 
@@ -29,7 +33,22 @@ namespace HelloWorld.Dialogs
         {
             string response = await userResponse;
             userName = response;
-            await context.PostAsync($"Welcome to this demo, {userName}!");
+
+            PromptDialog.Text(
+               context: context,
+               resume: ResumeGetAge,
+               prompt: "How old are you?"
+           );
+            
+        }
+
+        private async Task ResumeGetAge(IDialogContext context, IAwaitable<string> result)
+        {
+            var response = await result;
+
+            userAge = Int32.Parse(response);
+
+            await context.PostAsync($"Welcome to this demo, {userName}:{userAge}!");
             context.Done(this);
         }
     }

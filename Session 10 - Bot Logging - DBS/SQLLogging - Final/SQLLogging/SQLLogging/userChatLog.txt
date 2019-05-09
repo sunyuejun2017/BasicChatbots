@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].userChatLog
+(
+	[Id] INT NOT NULL identity(1,1) PRIMARY KEY, 
+    [fromId] NCHAR(500) NULL, 
+    [toId] NCHAR(500) NULL, 
+    [message] NCHAR(500) NULL
+)
